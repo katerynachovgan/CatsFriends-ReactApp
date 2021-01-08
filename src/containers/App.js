@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import CardList from './CardList';
-import SearchBox from './SearchBox';
-import Scroll from './Scroll';
+import CardList from '../components/CardList';
+import SearchBox from '../components/SearchBox';
+import Scroll from '../components/Scroll';
 import './App.css';
 
 class App extends Component {
@@ -24,11 +24,12 @@ class App extends Component {
     }
 
     render() {
-        const filteredCats = this.state.cats.filter(cats => {
-            return cats.name.toLowerCase().includes(this.state.searchfield.toLowerCase());
+        const { cats, searchfield } = this.state;
+        const filteredCats = cats.filter(cat => {
+            return cat.name.toLowerCase().includes(searchfield.toLowerCase());
         })
        
-       return !this.state.cats.length ? 
+       return !cats.length ? 
              <h1>Loading</h1> :
                 <div className='tc'>
                     <h1 className='f1'>Little Cats</h1>
